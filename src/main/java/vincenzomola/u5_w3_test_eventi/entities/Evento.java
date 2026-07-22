@@ -1,5 +1,6 @@
 package vincenzomola.u5_w3_test_eventi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -41,6 +42,30 @@ public class Evento {
 
     public String getTitolo() {
         return titolo;
+    }
+
+    public long getPostiDisponibili() {
+        return postiDisponibili;
+    }
+
+    public void setPostiDisponibili(long postiDisponibili) {
+        this.postiDisponibili = postiDisponibili;
+    }
+
+    public Utente getUtente() {
+        return utente;
+    }
+
+    public void setTitolo(String titolo) {
+        this.titolo = titolo;
+    }
+
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
+    }
+
+    public void setLuogo(String luogo) {
+        this.luogo = luogo;
     }
 
     @Override

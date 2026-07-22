@@ -18,16 +18,24 @@ public class Prenotazione {
     @ManyToOne
     @JoinColumn(name = "id_evento")
     private Evento evento;
-    @Column(name = "data_prenotazione")
-    private LocalDateTime dataPrenotazione;
     @Column(name = "posti_riservati")
     private long postiRiservati;
 
-    public Prenotazione(Utente utente, Evento evento, LocalDateTime dataPrenotazione, long postiRiservati) {
+    protected Prenotazione() {
+    }
+
+    public Prenotazione(Utente utente, Evento evento, long postiRiservati) {
         this.utente = utente;
         this.evento = evento;
-        this.dataPrenotazione = dataPrenotazione;
         this.postiRiservati = postiRiservati;
+    }
+
+    public long getPostiRiservati() {
+        return postiRiservati;
+    }
+
+    public long getId() {
+        return id;
     }
 
     @Override
@@ -36,7 +44,6 @@ public class Prenotazione {
                 "id=" + id +
                 ", utente=" + utente +
                 ", evento=" + evento +
-                ", dataPrenotazione=" + dataPrenotazione +
                 ", postiRiservati=" + postiRiservati +
                 '}';
     }
