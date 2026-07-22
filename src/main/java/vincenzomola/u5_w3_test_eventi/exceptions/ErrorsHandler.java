@@ -2,6 +2,7 @@ package vincenzomola.u5_w3_test_eventi.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.authorization.AuthorizationDeniedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -40,6 +41,12 @@ public class ErrorsHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorsDTO handleFormatNotValid(HttpMessageNotReadableException ex) {
         return new ErrorsDTO("Formato enum richiesto non valido", LocalDateTime.now());
+    }
+
+    @ExceptionHandler(AuthorizationDeniedException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorsDTO handleAccess(AuthorizationDeniedException ex) {
+        return new ErrorsDTO("ACCESSO NON AUTORIZZATO", LocalDateTime.now());
     }
 
     @ExceptionHandler(Exception.class)

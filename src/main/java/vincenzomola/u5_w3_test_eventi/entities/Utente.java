@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import vincenzomola.u5_w3_test_eventi.enums.RuoloUtente;
 
@@ -51,9 +52,13 @@ public class Utente implements UserDetails {
         return cognome;
     }
 
+    public RuoloUtente getRuoloUtente() {
+        return ruoloUtente;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return List.of(new SimpleGrantedAuthority(this.ruoloUtente.name()));
     }
 
     @Override

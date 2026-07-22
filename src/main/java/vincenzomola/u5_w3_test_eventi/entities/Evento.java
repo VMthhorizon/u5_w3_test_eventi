@@ -35,6 +35,14 @@ public class Evento {
         this.luogo = luogo;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public String getTitolo() {
+        return titolo;
+    }
+
     @Override
     public String toString() {
         return "Evento{" +

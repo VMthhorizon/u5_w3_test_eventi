@@ -4,9 +4,6 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import vincenzomola.u5_w3_test_eventi.entities.Utente;
-
-import java.time.LocalDateTime;
 
 public record EventoRequestDTO(
         @NotBlank(message = "Il titolo dell'evento è obbligatorio")
@@ -15,9 +12,6 @@ public record EventoRequestDTO(
         @NotBlank(message = "La descrizione è obbligatoria")
         @Size(min = 10, max = 500, message = "La descrizione deve contenere tra 10 e 500 caratteri")
         String descrizione,
-        @NotNull(message = "L'ID dell'utente organizzatore è obbligatorio")
-        @Min(value = 1, message = "L'ID dell'utente deve essere un numero valido maggiore di 0")
-        long utenteId,
         @NotNull(message = "Il numero di posti disponibili è obbligatorio")
         @Min(value = 1, message = "I posti disponibili devono essere almeno 1")
         long postiDisponibili,
